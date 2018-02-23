@@ -19,7 +19,7 @@
         'view_item' => 'Ver Punto',
         'search_item' => 'Buscar Punto',
         'not_found' => 'Punto no encontrado',
-        'not_found_in_trash' => 'Punto no encontrado'
+        'not_found_in_trash' => 'Punto no encontrado',
         'parent_item_colon' => 'Punto relacionado'
     );
     $args = array(
