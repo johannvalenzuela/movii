@@ -47,7 +47,7 @@
 
 add_action('init','punto_custom_post_type');
 
-function wporg_custom_box_html($post){
+function punto_custom_box_html($post){
     ?>
     <label for="punto_field_latitud">Latitud</label>
     <input type="text" name="punto_field_latitud" value="0"><br>
