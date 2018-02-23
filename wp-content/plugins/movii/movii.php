@@ -31,10 +31,10 @@
         'rewrite' => true,
         'capability_type' => 'post',
         'hierarchical' => false,
+        'manu_icon' => 'dashicons-location-alt',
         'support' => array(
             'title',
             'editor',
-            'excerpt',
             'thumbnail',
             'revisions'
         ),
@@ -42,7 +42,29 @@
         'menu_position' => 4,
         'exclude_from_search' => false 
     );
-    register_post_type('puntos',$args);
- };
+    register_post_type('punto',$args);
+};
 
- add_action('init','punto_custom_post_type');
+add_action('init','punto_custom_post_type');
+
+function wporg_custom_box_html($post){
+    ?>
+    <label for="punto_field_latitud">Latitud</label>
+    <input type="text" name="punto_field_latitud" value="0"><br>
+    <label for="punto_field_longitud">Longitud</label>
+    <input type="text" name="punto_field_longitud" value="0">
+    <?php
+};
+
+function punto_custom_metabox(){
+    add_meta_box(
+        'punto_box_latitud',
+        'Coordenadas',
+        'punto_custom_box_html',
+        'punto',
+        'normal',
+        'core'
+    );
+};
+
+ add_action('add_meta_boxes','punto_custom_metabox');
