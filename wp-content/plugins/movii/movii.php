@@ -34,7 +34,6 @@
         'manu_icon' => 'dashicons-location-alt',
         'support' => array(
             'title',
-            'editor',
             'thumbnail',
             'revisions'
         ),
@@ -47,7 +46,7 @@
 
 add_action('init','punto_custom_post_type');
 
-function punto_custom_box_html($post){
+function punto_coordenadas_custom_box_html($post){
     ?>
     <label for="punto_field_latitud">Latitud</label>
     <input type="text" name="punto_field_latitud" value="0"><br>
@@ -56,11 +55,30 @@ function punto_custom_box_html($post){
     <?php
 };
 
+function punto_datos_custom_box_html($post){
+    ?>
+    <label for="punto_field_direccion">Dirección</label>
+    <input type="text" name="punto_field_direccion" value=""><br>
+    <label for="punto_field_horario">Horario</label>
+    <input type="text" name="punto_field_horario" value="">
+    <label for="punto_field_detalles">Detalles</label>
+    <input type="text" name="punto_field_detalles" value="">
+    <?php
+};
+
 function punto_custom_metabox(){
     add_meta_box(
-        'punto_box_latitud',
-        'Coordenadas',
-        'punto_custom_box_html',
+        'punto_box_coordenadas',
+        'Coordenadas para Google Maps',
+        'punto_coordenadas_custom_box_html',
+        'punto',
+        'normal',
+        'core'
+    );
+    add_meta_box(
+        'punto_box_direccion',
+        'Datos del Punto de carga',
+        'punto_datos_custom_box_html',
         'punto',
         'normal',
         'core'
